@@ -9,6 +9,7 @@ import android.support.annotation.IntDef;
 import android.util.Log;
 
 public class MyService extends Service {
+    private final IBinder myBinder = new MyBinder();
     public MyService() {
     }
 
@@ -23,7 +24,7 @@ public class MyService extends Service {
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         Log.d("SER1", "This is onbind");
-        return null;
+        return myBinder;
     }
 
     @Override

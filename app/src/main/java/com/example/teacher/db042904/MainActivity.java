@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         connection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
+                Log.d("SER1", "onServiceConnected");
                 myService = ((MyService.MyBinder) service).getService();
+
             }
 
             @Override
@@ -35,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public void clickBind(View v)
     {
         Intent it = new Intent(context, MyService.class);
+        Log.d("SER1", "bindService");
 
-        bindService(it, connection, BIND_ADJUST_WITH_ACTIVITY);
+        bindService(it, connection, BIND_AUTO_CREATE);
     }
 }
