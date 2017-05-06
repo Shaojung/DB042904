@@ -15,7 +15,14 @@ public class MyService extends Service {
     private final IBinder myBinder = new MyBinder();
     private final Random mGenerator = new Random();
     Handler handler = new Handler();
+    private ServiceCallbacks mCallback;
     int i;
+
+    public void setMyCallback(ServiceCallbacks s)
+    {
+        mCallback = s;
+    }
+
     public MyService() {
         i=0;
     }
@@ -58,6 +65,7 @@ public class MyService extends Service {
             else
             {
                 Log.d("SER1", "時間到");
+                mCallback.setMyText("時間到了!!");
             }
 
         }
