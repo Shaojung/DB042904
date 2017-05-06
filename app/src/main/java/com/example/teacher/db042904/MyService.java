@@ -8,8 +8,11 @@ import android.os.IBinder;
 import android.support.annotation.IntDef;
 import android.util.Log;
 
+import java.util.Random;
+
 public class MyService extends Service {
     private final IBinder myBinder = new MyBinder();
+    private final Random mGenerator = new Random();
     public MyService() {
     }
 
@@ -31,5 +34,10 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("SER1", "This is onStartCommand");
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    /** method for clients */
+    public int getRandomNumber() {
+        return mGenerator.nextInt(100);
     }
 }

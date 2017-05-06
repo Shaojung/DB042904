@@ -42,4 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         bindService(it, connection, BIND_AUTO_CREATE);
     }
+
+    public void clickGetRandom(View v)
+    {
+        if (myService != null)
+        {
+            int r = myService.getRandomNumber();
+            Log.d("SER1", String.valueOf(r));
+        }
+
+    }
 }
